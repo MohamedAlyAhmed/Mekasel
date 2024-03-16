@@ -1,0 +1,222 @@
+@import "breakPoints";
+@import "variables";
+
+/**
+ * Responsive Mixin
+ * A Sass mixin for handling responsive design with various breakpoints and types.
+ *
+ * @param {string} $type - The type of responsive query (min, max, minMax, custom, portrait, landscape).
+ * @param {string} [$firstBreakPoint=xs] - The first breakpoint for the responsive query.
+ * @param {string} [$secondBreakPoint=xxl] - The second breakpoint for minMax queries or custom queries.
+ *
+ * @example
+ * // Usage example for a minimum width query:
+ * @include responsive(min, md) {
+ *   // Your styles here
+ * }
+ *
+ * @example
+ * // Usage example for a maximum width query:
+ * @include responsive(max, lg) {
+ *   // Your styles here
+ * }
+ *
+ * @example
+ * // Usage example for a range of widths query:
+ * @include responsive(minMax, sm, lg) {
+ *   // Your styles here
+ * }
+ *
+ * @example
+ * // Usage example for a custom width range query:
+ * @include responsive(custom, 600px, 1200px) {
+ *   // Your styles here
+ * }
+ *
+ * @example
+ * // Usage example for a portrait orientation query:
+ * @include responsive(portrait) {
+ *   // Your styles here
+ * }
+ *
+ * @example
+ * // Usage example for a landscape orientation query:
+ * @include responsive(landscape) {
+ *   // Your styles here
+ * }
+ *
+ * @throws {Warning} If the provided breakpoints or types are not supported.
+ */
+
+@mixin responsive($type: min, $firstBreakPoint: xs, $secondBreakPoint: xxl) {
+    $breakPoints: (
+        xs: $xs,
+        sm: $sm,
+        md: $md,
+        lg: $lg,
+        xl: $xl,
+    );
+
+    $types: (
+        min: "min",
+        max: "max",
+        minMax: "minMax",
+    );
+
+    $customTypes: (
+        custom: "custom",
+        portrait: "portrait",
+        landscape: "landscape",
+    );
+
+    // Normal types
+    @if map-has-key($types, $type) {
+        @if map-has-key($breakPoints, $firstBreakPoint) {
+            @if map-has-key($breakPoints, $secondBreakPoint) {
+                // Default values
+                $firstValue: map-get($breakPoints, $firstBreakPoint);
+                $secondValue: map-get($breakPoints, $secondBreakPoint);
+
+                // Ensure the second breakpoint is greater than the first for minMax queries
+                @if $secondValue < $firstValue {
+                    $temp: $secondValue;
+                    $secondValue: $firstValue;
+                    $firstValue: $temp;
+                    @warn "Swapped values for minMax query to ensure the second breakpoint is greater than the first.";
+                }
+
+                @if $type == min {
+                    @media only screen and (min-width: $firstValue) {
+                        @content;
+                    }
+                }
+
+                @if $type == max {
+                    @media only screen and (max-width: $firstValue) {
+                        @content;
+                    }
+                }
+
+                @if $type == minMax {
+                    @media only screen and (min-width: $firstValue) and (max-width: $secondValue) {
+                        @content;
+                    }
+                }
+            } @else {
+                @warn "Second BreakPoint #{$secondBreakPoint} is not supported. Supported BreakPoints are: #{map-keys($breakPoints)}";
+            }
+        } @else {
+            @warn "First BreakPoint #{$firstBreakPoint} is not supported. Supported BreakPoints are: #{map-keys($breakPoints)}";
+        }
+        // Custom types
+    } @else if map-has-key($customTypes, $type) {
+        @if $type == custom {
+            // Ensure the second breakpoint is greater than the first for custom queries
+            @if $secondBreakPoint < $firstBreakPoint {
+                $temp: $secondBreakPoint;
+                $secondBreakPoint: $firstBreakPoint;
+                $firstBreakPoint: $temp;
+                @warn "Swapped values for custom query to ensure the second breakpoint is greater than the first.";
+            }
+            @media only screen and (min-width: $firstBreakPoint) and (max-width: $secondBreakPoint) {
+                @content;
+            }
+        }
+
+        @if $type == portrait {
+            @media (orientation: portrait) {
+                @content;
+            }
+        }
+
+        @if $type == landscape {
+            @media (orientation: landscape) {
+                @content;
+            }
+        }
+    } @else {
+        @warn "#{$type} is not supported. Supported normal types are: #{map-keys($types)} | Supported custom types are: #{map-keys($customTypes)}";
+    }
+}
+
+// Mixin for a container with customizable parameters
+// @param $padding: Default padding for the container.
+// @param $maxWidth: Maximum width for the container.
+// @param $paddingSm: Padding for small screens.
+// @param $paddingMd: Padding for medium screens.
+// @param $paddingLg: Padding for large screens.
+
+@mixin container(
+    $padding: 80px,
+    $maxWidth: $xl,
+    $paddingLg: 60px,
+    $paddingMd: 40px,
+    $paddingSm: 15px
+) {
+    max-width: $maxWidth;
+    margin-inline: auto;
+    padding-inline: $padding;
+
+    @include responsive(max, lg) {
+        padding-inline: $paddingLg;
+    }
+
+    @include responsive(max, md) {
+        padding-inline: $paddingMd;
+    }
+
+    @include responsive(max, sm) {
+        padding-inline: $paddingSm;
+    }
+}
+
+@mixin transform($property) {
+    -moz-transform: $property;
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    -o-transform: $property;
+    transform: $property;
+}
+
+@mixin transition($time: "0.3s") {
+    -moz-transition: all $time ease-in-out;
+    -webkit-transition: all $time ease-in-out;
+    -ms-transition: all $time ease-in-out;
+    -o-transition: all $time ease-in-out;
+    transition: all $time ease-in-out;
+}
+
+@mixin filter($property) {
+    -moz-filter: $property;
+    -ms-transition: $property;
+    -o-transition: $property;
+    -webkit-filter: $property;
+    filter: $property;
+}
+
+@mixin ellipsis($lines) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+@mixin scrollbar($width: 5px, $radius: 10px, $color: $mainColor, $shadow: 5px) {
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 $shadow transparent;
+        border-radius: $radius;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: $mainColor;
+        border-radius: $radius;
+    }
+}

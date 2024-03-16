@@ -1,0 +1,94 @@
+@import "partials/breakPoints";
+@import "partials/fonts";
+@import "partials/inheritance";
+@import "partials/mixins";
+@import "partials/overwrite";
+@import "partials/pseudo";
+@import "partials/variables";
+
+:root {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    --bgColor: #ffffff;
+    --bgSoftColor: #f4f6fa;
+    --textColor: #000000;
+    --mainColor: #2453d4;
+    --borderColor: #676770;
+    --textOrange: #e16c2b;
+}
+
+[data-theme="dark"] {
+    --bgColor: #000000;
+    --textColor: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    @include transition("0.3s");
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 100%;
+    color: var(--textColor);
+    background-color: var(--bgColor);
+    overflow-x: hidden;
+}
+
+button {
+    outline: none;
+    border: none;
+    background: transparent;
+    color: $textColor;
+    &:focus,
+    &:active,
+    &:hover {
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+input {
+    outline: none;
+    border: none;
+    &:focus,
+    &:active,
+    &:hover {
+        outline: none;
+        border: none;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+    &:hover,
+    &:link,
+    &:visited,
+    &:focus,
+    &:active {
+        text-decoration: none;
+        color: inherit;
+        outline: none;
+    }
+}
+
+.no-select {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
