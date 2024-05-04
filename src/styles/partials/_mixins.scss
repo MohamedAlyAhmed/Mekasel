@@ -48,7 +48,7 @@
  * @throws {Warning} If the provided breakpoints or types are not supported.
  */
 
-@mixin responsive($type: min, $firstBreakPoint: xs, $secondBreakPoint: xxl) {
+@mixin responsive($type: min, $firstBreakPoint: xs, $secondBreakPoint: xl) {
     $breakPoints: (
         xs: $xs,
         sm: $sm,
@@ -139,34 +139,40 @@
     }
 }
 
-// Mixin for a container with customizable parameters
-// @param $padding: Default padding for the container.
-// @param $maxWidth: Maximum width for the container.
+// Mixin for a wrapper with customizable parameters
+// @param $padding: Default padding for the wrapper.
+// @param $maxWidth: Maximum width for the wrapper.
+// @param $paddingXs: Padding for extra small screens.
 // @param $paddingSm: Padding for small screens.
 // @param $paddingMd: Padding for medium screens.
 // @param $paddingLg: Padding for large screens.
 
-@mixin container(
+@mixin wrapper(
     $padding: 80px,
     $maxWidth: $xl,
     $paddingLg: 60px,
     $paddingMd: 40px,
-    $paddingSm: 15px
+    $paddingSm: 20px,
+    $paddingXs: 15px
 ) {
-    max-width: $maxWidth;
     margin-inline: auto;
-    padding-inline: $padding;
+    padding-inline: $paddingXs;
 
-    @include responsive(max, lg) {
-        padding-inline: $paddingLg;
-    }
-
-    @include responsive(max, md) {
-        padding-inline: $paddingMd;
-    }
-
-    @include responsive(max, sm) {
+    @include responsive(min, sm) {
+        width: 750px;
         padding-inline: $paddingSm;
+    }
+
+    @include responsive(min, md) {
+        width: 970px;
+    }
+
+    @include responsive(min, lg) {
+        width: 1170px;
+    }
+
+    @include responsive(min, xl) {
+        width: 1440px;
     }
 }
 

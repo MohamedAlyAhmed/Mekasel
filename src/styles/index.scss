@@ -30,7 +30,7 @@
     border: 0;
     outline: none;
     box-sizing: border-box;
-    @include transition("0.3s");
+    @include transition(0.3s);
 }
 
 html {
