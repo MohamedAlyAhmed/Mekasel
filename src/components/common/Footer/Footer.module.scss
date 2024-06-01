@@ -1,0 +1,17 @@
+@import "../../../styles/index.scss";
+
+.footer {
+  @extend %flex-center;
+  height: 60px;
+  background-color: $mainColor;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: auto;
+
+  span {
+    @extend %flex-center;
+    flex-shrink: 0;
+    margin-right: 4px;
+  }
+}
