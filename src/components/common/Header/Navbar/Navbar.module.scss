@@ -1,0 +1,29 @@
+@import "../../../../styles/index.scss";
+
+.navbarContainer {
+  @extend %flex-center;
+  background-color: $mainColor;
+  height: 60px;
+  overflow: hidden;
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    color: $textLight;
+
+    li {
+      user-select: none;
+      cursor: pointer;
+      padding: 20px;
+      @include transition();
+      text-transform: capitalize;
+      font-weight: 500;
+      font-size: 14px;
+
+      &:hover {
+        background-color: $hoverColor;
+      }
+    }
+  }
+}

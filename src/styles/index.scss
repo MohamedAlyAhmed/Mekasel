@@ -14,14 +14,17 @@
     --bgColor: #ffffff;
     --bgSoftColor: #f4f6fa;
     --textColor: #000000;
+    --textLight: #ffffff;
     --mainColor: #2453d4;
     --borderColor: #676770;
-    --textOrange: #e16c2b;
+    --textOrange: #f26300;
+    --hoverColor: #2438d6;
 }
 
 [data-theme="dark"] {
     --bgColor: #000000;
     --textColor: #ffffff;
+    --textLight: #000000;
 }
 
 * {
@@ -30,7 +33,6 @@
     border: 0;
     outline: none;
     box-sizing: border-box;
-    @include transition(0.3s);
 }
 
 html {

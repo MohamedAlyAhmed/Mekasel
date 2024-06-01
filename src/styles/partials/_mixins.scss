@@ -155,11 +155,11 @@
     $paddingSm: 20px,
     $paddingXs: 15px
 ) {
+    width: 100%;
     margin-inline: auto;
     padding-inline: $paddingXs;
 
     @include responsive(min, sm) {
-        width: 750px;
         padding-inline: $paddingSm;
     }
 
@@ -184,7 +184,7 @@
     transform: $property;
 }
 
-@mixin transition($time: "0.3s") {
+@mixin transition($time: 0.3s) {
     -moz-transition: all $time ease-in-out;
     -webkit-transition: all $time ease-in-out;
     -ms-transition: all $time ease-in-out;
