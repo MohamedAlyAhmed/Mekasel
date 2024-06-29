@@ -19,12 +19,14 @@
     --borderColor: #676770;
     --textOrange: #f26300;
     --hoverColor: #2438d6;
+    --toggleBg: #000000;
 }
 
 [data-theme="dark"] {
-    --bgColor: #000000;
+    --bgColor: #1C1C1C;
     --textColor: #ffffff;
     --textLight: #000000;
+    --toggleBg: #ffffff;
 }
 
 * {
@@ -33,6 +35,7 @@
     border: 0;
     outline: none;
     box-sizing: border-box;
+    transition: background 0.3s ease-in-out;
 }
 
 html {

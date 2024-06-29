@@ -184,12 +184,12 @@
     transform: $property;
 }
 
-@mixin transition($time: 0.3s) {
-    -moz-transition: all $time ease-in-out;
-    -webkit-transition: all $time ease-in-out;
-    -ms-transition: all $time ease-in-out;
-    -o-transition: all $time ease-in-out;
-    transition: all $time ease-in-out;
+@mixin transition($transition: all, $time: 0.3s, $type: ease-in-out) {
+    -moz-transition:  $transition $time $type;
+    -webkit-transition:  $transition $time $type;
+    -ms-transition:  $transition $time $type;
+    -o-transition:  $transition $time $type;
+    transition:  $transition $time $type;
 }
 
 @mixin filter($property) {

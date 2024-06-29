@@ -1,7 +1,7 @@
 @import "../../../styles/index.scss";
 
 .header {
-  background-color: #ffffff;
+  background-color: $bgColor;
 
   .headerWrapper {
     @extend %flex-between;
