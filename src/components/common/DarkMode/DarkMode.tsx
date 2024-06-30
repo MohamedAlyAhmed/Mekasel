@@ -25,12 +25,12 @@ const DarkMode: React.FC = () => {
 
   const selectedMode: string | null = localStorage.getItem("mode");
 
-  if (preferenceDark) {
-    setDarkMode();
-  }
-
-  if (preferenceLight) {
-    setLightMode();
+  if (!selectedMode) {
+    if (preferenceDark) {
+      setDarkMode();
+    } else if (preferenceLight) {
+      setLightMode();
+    }
   }
 
   if (selectedMode === "dark") {
