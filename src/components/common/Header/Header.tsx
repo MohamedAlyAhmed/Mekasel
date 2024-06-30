@@ -1,10 +1,12 @@
 import Logo from "@assets/icons/MekaselLogo.svg?react";
+import DarkMode from "@components/common/DarkMode/DarkMode";
 import Navbar from "@components/common/Header/Navbar/Navbar";
 import Wrapper from "@components/common/Wrapper/Wrapper";
-import DarkMode from "@components/common/DarkMode/DarkMode";
+import { appPaths } from "@routes/paths";
 import { GoHeart } from "react-icons/go";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
+import { NavLink } from "react-router-dom";
 import styles from "./Header.module.scss";
 
 const { header, logoContainer, headerWrapper, iconsContainer, cartContainer } =
@@ -15,18 +17,35 @@ const Header = () => {
     <header className={header}>
       <Wrapper>
         <div className={headerWrapper}>
-          <div className={logoContainer}>
-            <Logo />
-          </div>
+          <NavLink to={appPaths.home}>
+            <div className={logoContainer}>
+              <Logo />
+            </div>
+          </NavLink>
           <div>Search</div>
           <div className={iconsContainer}>
             <DarkMode />
-            <IoPersonCircleOutline title="Profile" />
-            <div className={cartContainer}>
-              <PiShoppingCartSimpleLight title="Cart" />
-              <p>0</p>
-            </div>
-            <GoHeart title="Wish List" />
+            <NavLink
+              to={appPaths.login}
+              className={({ isActive }) => (isActive ? styles.activeIcon : "")}
+            >
+              <IoPersonCircleOutline title="Profile" />
+            </NavLink>
+            <NavLink
+              to={appPaths.cart}
+              className={({ isActive }) => (isActive ? styles.activeIcon : "")}
+            >
+              <div className={cartContainer}>
+                <PiShoppingCartSimpleLight title="Cart" />
+                <p>0</p>
+              </div>
+            </NavLink>
+            <NavLink
+              to={appPaths.wishlist}
+              className={({ isActive }) => (isActive ? styles.activeIcon : "")}
+            >
+              <GoHeart title="Wishlist" />
+            </NavLink>
           </div>
         </div>
       </Wrapper>

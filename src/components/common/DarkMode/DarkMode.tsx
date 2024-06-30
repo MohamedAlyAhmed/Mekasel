@@ -2,6 +2,8 @@ import React, { ChangeEvent } from "react";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import styles from "./DarkMode.module.scss";
 
+const { toggleContainer, darkModeToggle, darkIcon, lightIcon } = styles;
+
 const DarkMode: React.FC = () => {
   const preferenceDark = window.matchMedia(
     "(prefers-color-scheme: dark)"
@@ -45,17 +47,17 @@ const DarkMode: React.FC = () => {
   };
 
   return (
-    <div className={styles.toggleContainer}>
+    <div className={toggleContainer}>
       <input
         type="checkbox"
         id="darkMode-toggle"
-        className={styles.darkModeToggle}
+        className={darkModeToggle}
         onChange={onChangeMode}
         defaultChecked={selectedMode === "dark"}
       />
       <label htmlFor="darkMode-toggle">
-        <MdDarkMode className={styles.darkIcon} />
-        <MdOutlineLightMode className={styles.lightIcon} />
+        <MdDarkMode className={darkIcon} />
+        <MdOutlineLightMode className={lightIcon} />
       </label>
     </div>
   );

@@ -1,10 +1,11 @@
 import React from "react";
+import AppRouter from "@routes/AppRouter";
 import ReactDOM from "react-dom/client";
-import MainLayout from "@layouts/MainLayout/MainLayout";
+// styles
 import "@styles/index.scss";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <MainLayout />
+    <AppRouter />
   </React.StrictMode>
 );

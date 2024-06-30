@@ -24,6 +24,23 @@
     align-items: center;
     gap: 12px;
 
+    .activeIcon {
+      & svg {
+        fill: $mainColor;
+      }
+      .cartContainer {
+        & svg {
+          fill: $mainColor;
+        }
+      }
+    }
+
+    & a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     & svg {
       width: 30px;
       height: 30px;

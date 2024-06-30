@@ -12,10 +12,16 @@
     align-items: center;
     color: #ffffff;
 
+    .active {
+      li {
+        background-color: $hoverColor;
+      }
+    }
+
     li {
       user-select: none;
       cursor: pointer;
-      padding: 20px;
+      padding: 22.5px;
       @include transition();
       text-transform: capitalize;
       font-weight: 500;
