@@ -1,5 +1,5 @@
 // fonts
-$enFont: "Ubuntu", sans-serif;
+$enFont: "Roboto", sans-serif;
 $arFont: "Cairo", sans-serif;
 
 // colors
@@ -11,3 +11,19 @@ $bgSoftColor: var(--bgSoftColor);
 $textOrange: var(--textOrange);
 $textLight: var(--textLight);
 $hoverColor: var(--hoverColor);
+
+// border radius
+$radiusSm: var(--radiusSm);
+$radiusMd: var(--radiusMd);
+$radiusLg: var(--radiusLg);
+$radiusFull: var(--radiusFull);
+
+// padding
+$paddingSm: var(--paddingSm);
+$paddingMd: var(--paddingMd);
+$paddingLg: var(--paddingLg);
+
+// margin
+$marginSm: var(--marginSm);
+$marginMd: var(--marginMd);
+$marginLg: var(--marginLg);

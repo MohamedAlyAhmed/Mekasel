@@ -1,5 +1,12 @@
+import Wrapper from "@components/common/Wrapper/Wrapper";
+import { CategoryCard } from "@components/eCommerce";
+
 const Home = () => {
-  return <div>Home</div>;
+    return (
+        <Wrapper>
+            <CategoryCard />
+        </Wrapper>
+    );
 };
 
 export default Home;

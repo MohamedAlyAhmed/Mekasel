@@ -7,10 +7,12 @@
 @import "partials/variables";
 
 :root {
-    font-family: "Ubuntu", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    // colors
     --bgColor: #ffffff;
     --bgSoftColor: #f4f6fa;
     --textColor: #000000;
@@ -20,10 +22,27 @@
     --textOrange: #f26300;
     --hoverColor: #2438d6;
     --toggleBg: #000000;
+
+    // border radius
+    --radiusSm: 8px;
+    --radiusMd: 12px;
+    --radiusLg: 16px;
+    --radiusFull: "100%";
+
+    // padding
+    --paddingSm: 8px;
+    --paddingMd: 12px;
+    --paddingLg: 16px;
+
+    // margin
+    --marginSm: 8px;
+    --marginMd: 12px;
+    --marginLg: 16px;
 }
 
 [data-theme="dark"] {
     --bgColor: #1C1C1C;
+    --bgSoftColor: #2f2f2f;
     --textColor: #ffffff;
     --textLight: #000000;
     --toggleBg: #ffffff;
@@ -54,6 +73,8 @@ button {
     border: none;
     background: transparent;
     color: $textColor;
+    padding: 0px;
+    width: fit-content;
     &:focus,
     &:active,
     &:hover {
@@ -88,12 +109,4 @@ a {
         color: inherit;
         outline: none;
     }
-}
-
-.no-select {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    user-select: none;
 }
