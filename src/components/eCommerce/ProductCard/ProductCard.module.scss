@@ -1,0 +1,129 @@
+@import "../../../styles/index.scss";
+
+.productContainer {
+    position: relative;
+    width: 333px;
+    height: 478px;
+    border: 1px solid $borderColor;
+    background-color: $bgColor;
+    border-radius: $radiusMd;
+    overflow: hidden;
+    @extend %no-select;
+
+    @include responsive(max, sm) {
+        width: 100%;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+        padding: $paddingXl;
+        height: 100%;
+        @include transition(height);
+
+        .header {
+            @extend %flex-between;
+
+            a {
+                font-size: 14px;
+                color: $greyText;
+                @include transition(color);
+
+                &:hover {
+                    color: $textColor;
+                }
+            }
+
+            svg {
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
+                @include transition(fill);
+
+                &:hover {
+                    fill: $mainColor;
+                }
+            }
+        }
+
+        .imgContainer {
+            width: 100%;
+            height: 335px;
+            cursor: pointer;
+            @include transition();
+            @include responsive(max, sm) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                @include responsive(max, sm) {
+                    width: 245px;
+                }
+            }
+        }
+
+        .changeHeight {
+            height: 280px;
+        }
+
+        .productName {
+            max-width: 100%;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            @include transition();
+            @include clampLines(2);
+
+            &:hover {
+                color: $mainColor;
+            }
+        }
+
+        .price {
+            @extend %flex-align-center;
+            gap: 8px;
+
+            & :first-child {
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            & :last-child {
+                font-size: 14px;
+                color: $greyText;
+                text-decoration: line-through;
+            }
+        }
+    }
+
+    .autoHeight {
+        height: calc(100% - 54px);
+    }
+
+    .button {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0px;
+        opacity: 0;
+        border-radius: 0px;
+        font-size: 16px;
+        font-weight: 400;
+        padding-inline: $paddingXl;
+        @extend %flex-between;
+        @include transition();
+    }
+
+    .showButtonStyle {
+        height: 54px;
+        opacity: 100%;
+    }
+}

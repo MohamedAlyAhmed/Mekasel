@@ -8,6 +8,7 @@
   font-size: 14px;
   font-weight: 500;
   margin-top: auto;
+  flex-shrink: 0;
 
   span {
     @extend %flex-center;
