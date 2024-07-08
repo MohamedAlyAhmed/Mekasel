@@ -40,8 +40,6 @@ const Seo: React.FC<SeoProps> = ({
     children,
 }) => {
     const metaTitle = addPostFixTitles ? POSTFIX_TITLE + title : title;
-    const domain = window.location.hostname;
-    const metaLink = domain + link;
     const metaRobots = noIndex ? "noindex, nofollow" : "index, follow";
     const twitterCardType = twitterData?.largeCard
         ? "summary_large_image"
@@ -55,7 +53,7 @@ const Seo: React.FC<SeoProps> = ({
             <meta name="author" content={authorName} />
             <meta name="keywords" content={keywords?.join(", ")} />
             <meta name="robots" content={metaRobots} />
-            <link rel="canonical" href={metaLink} />
+            <link rel="canonical" href={link} />
             <link rel="icon" href={favIcon} />
 
             {/* Facebook tags */}
