@@ -19,7 +19,7 @@ type SeoProps = {
     twitterData?: {
         username?: string;
         author?: string;
-        largeCard?: string;
+        largeCard?: boolean;
         image?: string;
     };
     addPostFixTitles?: boolean;
@@ -105,7 +105,7 @@ Seo.defaultProps = {
     twitterData: {
         username: "@m7md_3ly",
         author: "Mohamed Aly Ahmed",
-        largeCard: "",
+        largeCard: false,
         image: "https://i.ibb.co/vVN39Bz/Screenshot-2024-07-09-012349.png",
     },
     addPostFixTitles: true,
