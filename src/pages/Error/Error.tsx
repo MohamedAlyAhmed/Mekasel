@@ -2,6 +2,7 @@ import Container from "@components/common/Container/Container";
 import Wrapper from "@components/common/Wrapper/Wrapper";
 import { appPaths } from "@routes/paths";
 import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
+import Seo from "@components/common/Seo/Seo";
 import styles from "./Error.module.scss";
 
 const { container } = styles;
@@ -22,6 +23,7 @@ const Error = () => {
 
     return (
         <Container>
+            <Seo title={`Error ${errorStatus}`}/>
             <Wrapper>
                 <div className={container}>
                     <h1>{errorStatus}</h1>
