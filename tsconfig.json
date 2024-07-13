@@ -27,7 +27,8 @@
             "@services/*": ["services/*"],
             "@store/*": ["store/*"],
             "@styles/*": ["styles/*"],
-            "@utils/*": ["utils/*"]
+            "@utils/*": ["utils/*"],
+            "@customTypes/*": ["types/*"],
         },
 
         /* Linting */

@@ -1,27 +1,29 @@
-import { useNavigate } from "react-router-dom";
-import joystick from "@assets/images/joystick.png";
 import Button from "@components/ui/Button/Button";
+import { TCategory } from "@customTypes/categories";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import styles from "./CategoryCard.module.scss";
 
 const { categoryContainer, imgContainer, titleAndButton } = styles;
 
-const CategoryCard = () => {
+const CategoryCard = ({ title, img, prefix }: TCategory) => {
     const navigation = useNavigate();
     return (
         <div className={categoryContainer}>
             <div className={titleAndButton}>
-                <p>Game Joysticks</p>
+                <p>{title}</p>
                 <Button
                     title="Shop Now"
                     endIcon={<MdOutlineKeyboardArrowRight />}
-                    onClick={() => {navigation("/products/joysticks")}}
+                    onClick={() => {
+                        navigation(`/products/${prefix}`);
+                    }}
                 >
                     shop now
                 </Button>
             </div>
             <div className={imgContainer}>
-                <img src={joystick} alt="category" />
+                <img src={img} alt={title} />
             </div>
         </div>
     );

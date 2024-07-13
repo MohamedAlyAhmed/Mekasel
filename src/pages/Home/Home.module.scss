@@ -1,0 +1,23 @@
+@import "../../styles/index.scss"; 
+
+.categoriesContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow-x: scroll;
+    padding: 12px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &:hover {
+        &::-webkit-scrollbar {
+            display: block;
+            height: 4px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: $mainColor;
+            border-radius: $radiusLg;
+        }
+    }
+}

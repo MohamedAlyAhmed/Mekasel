@@ -1,5 +1,5 @@
-import joystick from "@assets/images/joystick.png";
 import Button from "@components/ui/Button/Button";
+import { TProduct } from "@customTypes/products";
 import classNames from "classnames";
 import { useState } from "react";
 import { GoHeart } from "react-icons/go";
@@ -12,7 +12,7 @@ const {
     header,
     imgContainer,
     productName,
-    price,
+    priceStyle,
     button,
     showButtonStyle,
     content,
@@ -20,7 +20,7 @@ const {
     autoHeight,
 } = styles;
 
-const ProductCard = () => {
+const ProductCard = ({ title, price, img, cat_prefix }: TProduct) => {
     const [showButton, setShowButton] = useState(false);
 
     return (
@@ -31,8 +31,8 @@ const ProductCard = () => {
         >
             <div className={classNames(content, showButton ? autoHeight : "")}>
                 <div className={header}>
-                    <Link title="Show Category" to="/products/joystick">
-                        Joysticks
+                    <Link title="Show Category" to={`/products/${cat_prefix}`}>
+                        {cat_prefix}
                     </Link>
                     <GoHeart title="Add To Wishlist" />
                 </div>
@@ -43,13 +43,13 @@ const ProductCard = () => {
                     )}
                     title="Show Details"
                 >
-                    <img src={joystick} alt="product" />
+                    <img src={img} alt={title} />
                 </div>
-                <p className={productName} title="Show Details">
-                    Sony DualSense Wireless Controller for PlayStation 5
+                <p className={productName} title={title}>
+                    {title}
                 </p>
-                <div className={price}>
-                    <p>$1900</p>
+                <div className={priceStyle}>
+                    <p>${price}</p>
                     <p>$2500</p>
                 </div>
             </div>

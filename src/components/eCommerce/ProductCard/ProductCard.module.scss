@@ -2,7 +2,7 @@
 
 .productContainer {
     position: relative;
-    width: 333px;
+    width: 100%;
     height: 478px;
     border: 1px solid $borderColor;
     background-color: $bgColor;
@@ -86,7 +86,7 @@
             }
         }
 
-        .price {
+        .priceStyle {
             @extend %flex-align-center;
             gap: 8px;
 
