@@ -1,8 +1,8 @@
-import Button from "@components/ui/Button/Button";
 import { TCategory } from "@customTypes/categories";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import styles from "./CategoryCard.module.scss";
+import { Button } from "@components/ui";
 
 const { categoryContainer, imgContainer, titleAndButton } = styles;
 

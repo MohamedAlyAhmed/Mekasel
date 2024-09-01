@@ -11,10 +11,6 @@ const navbarPages = [
     path: appPaths.home,
   },
   {
-    title: "Products",
-    path: appPaths.products,
-  },
-  {
     title: "About Us",
     path: appPaths.aboutUS,
   },

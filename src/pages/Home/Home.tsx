@@ -1,57 +1,43 @@
 import Seo from "@components/common/Seo/Seo";
-import { CategoryCard } from "@components/eCommerce";
+import { CategoryCard, GridList } from "@components/eCommerce";
+import { Loading } from "@components/feedback";
 import { appPaths } from "@routes/paths";
 import { getCategoriesThunk } from "@store/categories/categoriesSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useEffect } from "react";
-import styles from "./Home.module.scss";
 
-const { categoriesContainer } = styles;
 
 const Home = () => {
     const dispatch = useAppDispatch();
 
-    const {
-        records: categoriesData,
-        loading,
-        error,
-    } = useAppSelector((state) => state.categories);
+    const { records, loading, error } = useAppSelector(
+        (state) => state.categories
+    );
 
     useEffect(() => {
-        if (categoriesData.length === 0) {
+        if (records.length === 0) {
             dispatch(getCategoriesThunk());
         }
-    }, [dispatch, categoriesData]);
-
-    const getCategoriesContent = () => {
-        if (loading === "pending") {
-            return <div>Loading ...</div>;
-        }
-
-        if (error && !categoriesData.length) {
-            return <div>error</div>;
-        }
-
-        if (categoriesData.length > 0) {
-            return (
-                <>
-                    {categoriesData.map(({ id, title, prefix, img }) => (
-                        <CategoryCard
-                            key={id}
-                            title={title}
-                            prefix={prefix}
-                            img={img}
-                        />
-                    ))}
-                </>
-            );
-        }
-    };
+    }, [dispatch, records]);
 
     return (
         <>
             <Seo title="Home" link={appPaths.home} />
-            <div className={categoriesContainer}>{getCategoriesContent()}</div>
+            <Loading
+                status={loading}
+                error={error}
+                loadingMessage="please wait ..."
+            >
+                <GridList
+                    records={records}
+                    renderItem={(record) => <CategoryCard {...record} />}
+                    xs={1}
+                    sm={1}
+                    md={1}
+                    lg={2}
+                    xl={3}
+                />
+            </Loading>
         </>
     );
 };

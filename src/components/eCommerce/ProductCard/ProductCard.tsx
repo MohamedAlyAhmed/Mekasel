@@ -1,4 +1,3 @@
-import Button from "@components/ui/Button/Button";
 import { TProduct } from "@customTypes/products";
 import classNames from "classnames";
 import { useState } from "react";
@@ -6,6 +5,7 @@ import { GoHeart } from "react-icons/go";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
+import { Button } from "@components/ui";
 
 const {
     productContainer,

@@ -1,0 +1,19 @@
+@import "../../../styles/index.scss";
+
+.spinner {
+    width: 100%;
+    min-height: 80dvh;
+    @extend %flex-center;
+
+    .spinnerAndMessage {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        p {
+            font-size: 14px;
+            color: $greyText;
+            text-transform: capitalize;
+        }
+    }
+}

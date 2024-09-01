@@ -1,7 +1,37 @@
-import React, { ReactNode } from "react";
+import joyStickImage from "@assets/images/joystick.png";
+import { ReactNode } from "react";
 import { Helmet } from "react-helmet";
 
 const POSTFIX_TITLE = "Mekasel | ";
+
+const defaultProps = {
+    title: "Mekasel",
+    description:
+        "Discover a wide range of products across all categories at Mekasel. Shop simple and fast with our user-friendly interface, tailored for those who love convenience and efficiency. Enjoy a seamless shopping experience with unbeatable deals and quick delivery!",
+    authorName: "Mohamed Aly Ahmed",
+    keywords: [
+        "Mekasel",
+        "Mekasel app",
+        "shop simple",
+        "all categories",
+        "products",
+        "online shopping",
+    ],
+    noIndex: false,
+    favIcon: "",
+    facebookData: {
+        url: "",
+        type: "",
+        image: joyStickImage,
+    },
+    twitterData: {
+        username: "@m7md_3ly",
+        author: "Mohamed Aly Ahmed",
+        largeCard: false,
+        image: joyStickImage,
+    },
+    addPostFixTitles: true,
+};
 
 type SeoProps = {
     title?: string;
@@ -26,19 +56,19 @@ type SeoProps = {
     children?: ReactNode;
 };
 
-const Seo: React.FC<SeoProps> = ({
-    title,
-    description,
-    authorName,
-    keywords,
-    noIndex,
+const Seo = ({
+    title = defaultProps.title,
+    description = defaultProps.description,
+    authorName = defaultProps.authorName,
+    keywords = defaultProps.keywords,
+    noIndex = defaultProps.noIndex,
     link,
-    favIcon,
-    facebookData,
-    twitterData,
-    addPostFixTitles,
+    favIcon = defaultProps.favIcon,
+    facebookData = defaultProps.facebookData,
+    twitterData = defaultProps.twitterData,
+    addPostFixTitles = defaultProps.addPostFixTitles,
     children,
-}) => {
+}: SeoProps) => {
     const metaTitle = addPostFixTitles ? POSTFIX_TITLE + title : title;
     const metaRobots = noIndex ? "noindex, nofollow" : "index, follow";
     const twitterCardType = twitterData?.largeCard
@@ -79,32 +109,3 @@ const Seo: React.FC<SeoProps> = ({
 };
 
 export default Seo;
-
-Seo.defaultProps = {
-    title: "Mekasel",
-    description:
-        "Discover a wide range of products across all categories at Mekasel. Shop simple and fast with our user-friendly interface, tailored for those who love convenience and efficiency. Enjoy a seamless shopping experience with unbeatable deals and quick delivery!",
-    authorName: "Mohamed Aly Ahmed",
-    keywords: [
-        "Mekasel",
-        "Mekasel app",
-        "shop simple",
-        "all categories",
-        "products",
-        "online shopping",
-    ],
-    noIndex: false,
-    favIcon: "",
-    facebookData: {
-        url: "",
-        type: "",
-        image: "https://i.ibb.co/vVN39Bz/Screenshot-2024-07-09-012349.png",
-    },
-    twitterData: {
-        username: "@m7md_3ly",
-        author: "Mohamed Aly Ahmed",
-        largeCard: false,
-        image: "https://i.ibb.co/vVN39Bz/Screenshot-2024-07-09-012349.png",
-    },
-    addPostFixTitles: true,
-};

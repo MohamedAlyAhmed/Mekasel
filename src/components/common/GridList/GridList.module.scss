@@ -1,0 +1,25 @@
+@import "../../../styles/index.scss";
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(var(--xl, 4), 1fr);
+    gap: calc(var(--spacing, 12) * 1px);
+    padding-top: $paddingLg;
+    padding-bottom: $paddingLg;
+
+    @include responsive(max, lg) {
+        grid-template-columns: repeat(var(--lg, 3), 1fr);
+    }
+
+    @include responsive(max, md) {
+        grid-template-columns: repeat(var(--md, 2), 1fr);
+    }
+
+    @include responsive(max, sm) {
+        grid-template-columns: repeat(var(--sm, 1), 1fr);
+    }
+
+    @include responsive(max, xs) {
+        grid-template-columns: repeat(var(--xs, 1), 1fr);
+    }
+}
