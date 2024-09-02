@@ -1,4 +1,3 @@
-import joyStickImage from "@assets/images/joystick.png";
 import { ReactNode } from "react";
 import { Helmet } from "react-helmet";
 
@@ -22,13 +21,13 @@ const defaultProps = {
     facebookData: {
         url: "",
         type: "",
-        image: joyStickImage,
+        image: "https://i.ibb.co/vVN39Bz/Screenshot-2024-07-09-012349.png",
     },
     twitterData: {
         username: "@m7md_3ly",
         author: "Mohamed Aly Ahmed",
         largeCard: false,
-        image: joyStickImage,
+        image: "https://i.ibb.co/vVN39Bz/Screenshot-2024-07-09-012349.png",
     },
     addPostFixTitles: true,
 };
@@ -101,7 +100,17 @@ const Seo = ({
             <meta name="twitter:card" content={twitterCardType} />
             <meta name="twitter:image" content={twitterData?.image} />
 
-            <meta name="referrer" content="origin-when-crossorigin" />
+            <script type="application/ld+json">
+                {`
+                {
+                    "@context": "http://schema.org",
+                    "@type": "WebSite",
+                    "name": "Mekasel App",
+                    "url": "${link}",
+                    "description": "${description}"
+                }
+            `}
+            </script>
 
             {children}
         </Helmet>
