@@ -7,7 +7,7 @@ const MainLayout = () => {
     return (
         <Container>
             <Header />
-            <div style={{ minHeight: "100dvh" } as React.CSSProperties}>
+            <div style={{ minHeight: "100vh" } as React.CSSProperties}>
                 <Outlet />
             </div>
             <Footer />
