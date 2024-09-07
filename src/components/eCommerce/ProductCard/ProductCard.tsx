@@ -1,11 +1,13 @@
+import { Button } from "@components/ui";
 import { TProduct } from "@customTypes/products";
+import { addToCart } from "@store/cart/cartSlice";
+import { useAppDispatch } from "@store/hooks";
 import classNames from "classnames";
-import { useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { GoHeart } from "react-icons/go";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
-import { Button } from "@components/ui";
 
 const {
     productContainer,
@@ -20,8 +22,26 @@ const {
     autoHeight,
 } = styles;
 
-const ProductCard = ({ title, price, img, cat_prefix }: TProduct) => {
+const ProductCard = memo(({ id, title, price, img, cat_prefix }: TProduct) => {
     const [showButton, setShowButton] = useState(false);
+    const [buttonLoading, setButtonLoading] = useState(false);
+    const dispatch = useAppDispatch();
+
+    const addToCartHandler = () => {
+        setButtonLoading(true);
+        dispatch(addToCart(id));
+    };
+
+    useEffect(() => {
+        if (!buttonLoading) {
+            return;
+        }
+
+        const debounce = setTimeout(() => {
+            setButtonLoading(false);
+        }, 500);
+        return () => clearTimeout(debounce);
+    }, [buttonLoading]);
 
     return (
         <div
@@ -49,8 +69,8 @@ const ProductCard = ({ title, price, img, cat_prefix }: TProduct) => {
                     {title}
                 </p>
                 <div className={priceStyle}>
-                    <p>${price}</p>
-                    <p>$2500</p>
+                    <p>${price.toFixed(2)}</p>
+                    {/* <p>$2500</p> */}
                 </div>
             </div>
             <Button
@@ -60,11 +80,14 @@ const ProductCard = ({ title, price, img, cat_prefix }: TProduct) => {
                 )}
                 endIcon={<PiShoppingCartSimpleLight />}
                 title="Add To Cart"
+                onClick={addToCartHandler}
+                disabled={buttonLoading}
+                loading={buttonLoading}
             >
                 Add to cart
             </Button>
         </div>
     );
-};
+});
 
 export default ProductCard;

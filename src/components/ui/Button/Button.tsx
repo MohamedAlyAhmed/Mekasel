@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import styles from "./Button.module.scss";
+import DotsSpinner from "../DotsSpinner/DotsSpinner";
 
 const { buttonStyle, iconStyle } = styles;
 
@@ -13,6 +14,8 @@ interface ButtonProps {
     title?: string;
     startIcon?: React.ReactNode;
     endIcon?: React.ReactNode;
+    loading?: boolean;
+    loadingComponent?: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,6 +27,8 @@ const Button: React.FC<ButtonProps> = ({
     title,
     startIcon,
     endIcon,
+    loading,
+    loadingComponent,
 }) => {
     return (
         <button
@@ -34,7 +39,8 @@ const Button: React.FC<ButtonProps> = ({
             disabled={disabled}
         >
             {startIcon && <div className={iconStyle}>{startIcon}</div>}
-            <div>{children}</div>
+            {!loading && <div>{children}</div>}
+            {loading && (loadingComponent ? loadingComponent : <DotsSpinner size={7} color="white"/>)}
             {endIcon && <div className={iconStyle}>{endIcon}</div>}
         </button>
     );
