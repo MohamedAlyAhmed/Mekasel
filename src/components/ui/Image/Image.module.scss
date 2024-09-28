@@ -1,0 +1,16 @@
+@import "../../../styles/index.scss";
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .imgHidden {
+        display: none;
+    }
+
+    .loadingContainer {
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,9 @@
+// override react slick
+
+.slick-slide {
+    padding: 0 10px; /* Space between slides */
+}
+
+.slick-list {
+    margin: 0 -10px; /* Prevents content from overflowing */
+}

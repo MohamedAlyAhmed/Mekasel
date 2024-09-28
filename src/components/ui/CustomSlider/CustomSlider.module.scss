@@ -1,0 +1,9 @@
+@import "../../../styles/index.scss";
+
+.arrowStyle {
+    z-index: 1;
+
+    &::before {
+        color: $mainColor;
+    }
+}
